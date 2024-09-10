@@ -1,39 +1,55 @@
 from colorama import Back, Style
 
+# Helper function to draw repeated patterns
 def draw_rectangle(width, height, color):
     for _ in range(height):
         print(color + " " * width + Style.RESET_ALL)
 
+# Function to draw the ceiling with specified width and reduction in yellow pattern
 def draw_ceiling():
-    print(Back.LIGHTBLUE_EX + " " * 37 + Back.YELLOW + " " * 6 + " " * 37 + Style.RESET_ALL)
-    print(Back.LIGHTBLUE_EX + " " * 35 + Back.YELLOW + " " * 10 + " " * 35 + Style.RESET_ALL)
-    print(Back.LIGHTBLUE_EX + " " * 30 + Back.YELLOW + " " * 20 + " " * 30 + Style.RESET_ALL)
-    print(Back.LIGHTBLUE_EX + " " * 25 + Back.YELLOW + " " * 30 + " " * 25 + Style.RESET_ALL)
-    print(Back.LIGHTBLUE_EX + " " * 20 + Back.YELLOW + " " * 40 + " " * 20 + Style.RESET_ALL)
-    print(Back.LIGHTBLUE_EX + " " * 15 + Back.YELLOW + " " * 50 + " " * 15 + Style.RESET_ALL)
+    for i in range(5):
+        side_space = 40 - i * 5  # gradually reduces the side space
+        yellow_width = 10 + i * 10  # gradually increases yellow pattern
+        print(Back.LIGHTBLUE_EX + " " * side_space + Back.YELLOW + " " * yellow_width + " " * side_space + Style.RESET_ALL)
 
+# Function to draw the main body of the house
 def draw_body():
     draw_rectangle(80, 4, Back.LIGHTBLUE_EX + " " * 15 + Back.RED)
 
+# Function to draw the window section with reusable window pattern
 def draw_window():
-    for _ in range(4):
-        print(Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 5 + Back.WHITE + " " * 10 + Back.RED + " " * 20 + Back.WHITE + " " * 10 + Back.RED + " " * 5 + " " * 15 + Style.RESET_ALL)
+    window_pattern = (
+        Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 5 + Back.WHITE + " " * 10 +
+        Back.RED + " " * 20 + Back.WHITE + " " * 10 + Back.RED + " " * 5 + " " * 15 + Style.RESET_ALL
+    )
+    draw_rectangle(80, 4, window_pattern)
 
+# Function to draw the door
 def draw_door():
-    for _ in range(5):
-        print(Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 15 + Back.YELLOW + " " * 9 + Back.LIGHTBLACK_EX + " " * 1 + Back.YELLOW + " " * 10 + Back.RED + " " * 15 + " " * 15 + Style.RESET_ALL)
+    door_pattern = (
+        Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 15 + Back.YELLOW + " " * 9 +
+        Back.LIGHTBLACK_EX + " " * 1 + Back.YELLOW + " " * 10 + Back.RED + " " * 15 + " " * 15 + Style.RESET_ALL
+    )
+    draw_rectangle(80, 5, door_pattern)
 
+# Function to draw the door handle
 def draw_door_handle():
-    for _ in range(2):
-        print(Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 15 + Back.YELLOW + " " * 8 + Back.LIGHTBLACK_EX + " " * 3 + Back.YELLOW + " " * 9 + Back.RED + " " * 15 + " " * 15 + Style.RESET_ALL)
+    handle_pattern = (
+        Back.LIGHTBLUE_EX + " " * 15 + Back.RED + " " * 15 + Back.YELLOW + " " * 8 +
+        Back.LIGHTBLACK_EX + " " * 3 + Back.YELLOW + " " * 9 + Back.RED + " " * 15 + " " * 15 + Style.RESET_ALL
+    )
+    draw_rectangle(80, 2, handle_pattern)
 
+# Function to draw the grass area
 def draw_grass():
-    for _ in range(5):
-        print(Back.GREEN + " " * 100 + Style.RESET_ALL)
+    draw_rectangle(100, 5, Back.GREEN)
 
+# Function to draw flowers in the grass
 def draw_flower():
     print(Back.GREEN + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 34 + Style.RESET_ALL)
-    print(Back.GREEN + " " * 18 + Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 16 + Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 16 + Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 32 + Style.RESET_ALL)
+    print(Back.GREEN + " " * 18 + Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 16 +
+          Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 16 +
+          Back.LIGHTCYAN_EX + " " * 2 + Back.YELLOW + " " * 2 + Back.LIGHTCYAN_EX + " " * 2 + " " * 32 + Style.RESET_ALL)
     print(Back.GREEN + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 20 + Back.LIGHTCYAN_EX + " " * 2 + " " * 34 + Style.RESET_ALL)
 
 # Drawing the house
